@@ -49,3 +49,12 @@ session.getDailyConsumption(yesterday, today).then((result) => {
 
 FetchEnedis(7); //immediate execution
                                                       
+function scheduler (delay) {
+	cron.schedule("23 0-23/3 * * *", () => FetchEnedis(delay),{
+		scheduled: true,
+		timezone: "Europe/Paris"
+	}); //periodically execution.
+}
+
+scheduler (1);
+													  
